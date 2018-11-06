@@ -19,8 +19,12 @@ and open the template in the editor.
             </div>
             <div class="row">
                 <div class="col-8 border border-dark" style="background-color: #ccccff; height:100px;">Espacio en blanco</div>
-                <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">Registrarse</div>
-                <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">Login</div>
+                <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">
+                    <button class="btn btn-primary btn-block" type="button" onclick="cargaRegistro();">Registrarse</button>
+                </div>
+                <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">
+                   <button class="btn btn-primary btn-block" type="button" onclick="cargaLogin();">Login</button>         
+                </div>
             </div>
         </div>
         
@@ -57,8 +61,11 @@ and open the template in the editor.
                     <br>
                     <br>
                     <button class="btn btn-primary btn-block" type="button">Normas de Uso</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-block" type="button">Foro</button>
                 </div>
-                <div class="col-8 border border-dark" style="background-color: #71dd8a;">
+                <div id="principal" class="col-8 border border-dark" style="background-color: #71dd8a;">
                     <div class="row">
                         <div class="col-6 border border-dark" style="background-color:#e4606d; border:1px black; height:400px;"></div>
                         <div class="col-6 border border-dark" style="background-color:#cce5ff; border:1px black; height:400px;"></div>
@@ -88,5 +95,19 @@ and open the template in the editor.
         
     </body>
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    
+    <script>
+       
+      function cargaRegistro(){
+       $('#principal').load("PaginaRegistro.php");
+      }
+      
+      function cargaLogin(){
+          $('#principal').load("PaginaLogin.php");
+      }
+    
+    
+    </script>
+       
     
 </html>
