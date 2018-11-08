@@ -18,7 +18,10 @@ and open the template in the editor.
                <div class="col-12 border border-dark" style="background-color: midnightblue; height:260px;">Banner</div>
             </div>
             <div class="row">
-                <div class="col-8 border border-dark" style="background-color: #ccccff; height:100px;">Espacio en blanco</div>
+                <div class="col-8 border border-dark" style="background-color: #ccccff; height:100px;">Espacio en blanco
+                    <button class="btn btn-primary" type="button" onclick="cargaPerfil();">Perfil Usuario Prueba</button> 
+                    <button class="btn btn-primary" type="button" onclick="cargaLibro();">Perfil Libro Prueba</button> 
+                </div>
                 <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">
                     <button class="btn btn-primary btn-block" type="button" onclick="cargaRegistro();">Registrarse</button>
                 </div>
@@ -28,7 +31,7 @@ and open the template in the editor.
             </div>
         </div>
         
-        <div class="container">
+        <div id="contenedor" class="container">
             <div class="row">
                 <div class="col-4 border border-dark" style="background-color: #efa2a9;">
                     <br>
@@ -60,7 +63,7 @@ and open the template in the editor.
                     </div>
                     <br>
                     <br>
-                    <button class="btn btn-primary btn-block" type="button">Normas de Uso</button>
+                    <button class="btn btn-primary btn-block" type="button">En Qué Consiste</button>
                     <br>
                     <br>
                     <button class="btn btn-primary btn-block" type="button">Foro</button>
@@ -104,6 +107,14 @@ and open the template in the editor.
       
       function cargaLogin(){
           $('#principal').load("PaginaLogin.php");
+      }
+      
+      function cargaPerfil(){
+          $('#contenedor').load("PaginaPerfil.php");
+      }
+      
+      function cargaLibro(){
+          $('#contenedor').load("PaginaLibro.php");
       }
     
     
