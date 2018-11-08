@@ -98,24 +98,24 @@ and open the template in the editor.
         
     </body>
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script>
        
       function cargaRegistro(){
        $('#principal').load("PaginaRegistro.php");
-      }
+      };
       
       function cargaLogin(){
           $('#principal').load("PaginaLogin.php");
-      }
+      };
       
       function cargaPerfil(){
           $('#contenedor').load("PaginaPerfil.php");
-      }
+      };
       
       function cargaLibro(){
           $('#contenedor').load("PaginaLibro.php");
-      }
+      };
     
     
     </script>

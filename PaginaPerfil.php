@@ -17,10 +17,10 @@
             <br>
             <button class="btn btn-primary btn-block" type="button">Favoritos</button>
             <br>
-            <button class="btn btn-primary btn-block" type="button">Publicar Libro</button>
+            <button class="btn btn-primary btn-block" type="button" onclick="publicaLibro();">Publicar Libro</button>
         </div>
     </div>
-    <div class="col-8 border border-dark">
+    <div id="principal2" class="col-8 border border-dark">
         <div class="row border border-dark" style="height:400px; width:100%">Información del Usuario</div>
         <div class="row border border-dark" style="height:400px; width:100%">Lista de Libros Publicados</div>
     </div>
@@ -28,7 +28,9 @@
 
 <script>
 
-
+   function publicaLibro(){
+       $('#principal2').load('RegistraLibro.php');
+   }
 
 
 </script>
