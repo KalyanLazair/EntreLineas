@@ -39,3 +39,45 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.volverIndex {
+    cursor: pointer;
+}
+
+.botonBuscar{
+    float:right;
+}
+
+.portadadelibro{
+    width: 400px;
+    height:190px;
+    background-color: #cce5ff;
+}
+
+.descripciondelibro{
+    width: 400px;
+    height: 100px;
+    background-color:#71dd8a;
+}
+
+.generodelibro{
+    width: 200px;
+    height: 30px;
+    background-color: #f1b0b7;
+}
+
+.titulodelibro{
+    width: 400px;
+    height: 30px;
+    background-color: activeborder;
+}
+
+.autordelibro{
+    width: 400px;
+    height: 30px;
+    background-color: activeborder;
+}
+
+.cajadelibros {
+    cursor: pointer;
+}

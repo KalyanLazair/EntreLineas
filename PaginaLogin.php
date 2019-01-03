@@ -1,4 +1,5 @@
 <?php
+    session_start();
 ?>
 <div class="row">
     <br>
@@ -17,6 +18,26 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <button class="btn btn-primary" type="button" style="float:right;">Conectarse</button>
+        <button id="botonLogin" class="btn btn-primary" type="button" style="float:right;">Conectarse</button>
     </div>
 </div>
+
+<script>
+     
+     $('#botonLogin').click(function () {
+                                    // Read the input content
+                                    var _nombreUsuario = $('#cajaNombre').val();
+                                    var _passUsuario = $('#cajaPassword').val();
+                                    console.log(_nombreUsuario);
+                                    console.log(_passUsuario);
+                                    
+                                    $('#principal').load("login.php", {
+                                        nombreUsuario: _nombreUsuario,
+                                        passUsuario: _passUsuario
+                                    });
+                                    
+                                    
+                                });
+
+
+</script>
