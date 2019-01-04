@@ -112,32 +112,33 @@ and open the template in the editor.
                 <div id="principal" class="col-8 border border-dark" style="background-color: #71dd8a;">
                     <div class="row">
                         <div class="col-6 border border-dark" style="background-color:#e4606d; border:1px black; height:400px;">
-                            <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[0];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[0]?>">Aventuras</button>
+                            <div style="background-color: white; margin: 10px; width:200px; height:300px;">
+                                <img src="<?php echo $arrayPortada[0];?>"></div>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[0]?>">Libro</button>
                         </div>
                         <div class="col-6 border border-dark" style="background-color:#cce5ff; border:1px black; height:400px;">
                             <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[1];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[1]?>">Aventuras</button>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[1]?>">Libro</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 border border-dark" style="background-color:#cce5ff; border:1px black; height:400px;">
                             <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[2];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[2]?>">Aventuras</button>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[2]?>">Libro</button>
                         </div>
                         <div class="col-6 border border-dark" style="background-color:#e4606d; border:1px black; height:400px;">
                             <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[3];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[3]?>">Aventuras</button>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[3]?>">Libro</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 border border-dark" style="background-color:#e4606d; border:1px black; height:400px;">
                             <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[4];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[4]?>">Aventuras</button>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[4]?>">Libro</button>
                         </div>
                         <div class="col-6 border border-dark" style="background-color:#cce5ff; border:1px black; height:400px;">
                             <div style="background-color: white; margin: 10px; width:200px; height:300px;"><?php echo $arrayPortada[5];?></div>
-                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[5]?>">Aventuras</button>
+                            <button class="btn btn-primary botonPerfilLibro" value="<?php echo $arrayID[5]?>">Libro</button>
                         </div>
                     </div>
                 </div>
@@ -205,10 +206,23 @@ and open the template in the editor.
 
     $(".botonGenero").click(function(){
          var _gen=$(this).val();
-         console.log($(this).val());
+         var _num=1; //Nos va a permitir variar la consulta en caso de buscar por género o por búsqueda.
         
          $('#principal').load("ListaLibros.php", {
-                 genero: _gen
+                 genero: _gen,
+                 num: _num
+          });   
+    });
+    
+    //Función de buscar
+    
+    $(".botonBuscar").click(function(){
+         var _buscar=$("#cajaBuscar").val();
+         var _num=2; //Nos va a permitir variar la consulta en caso de buscar por género o por búsqueda.
+        
+         $('#principal').load("ListaLibros.php", {
+                 buscar: _buscar,
+                 num: _num
           });   
     });
     

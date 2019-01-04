@@ -28,13 +28,14 @@
     <div class="col-4 border border-dark">
         <div class="row border border-dark">
             <div class="col-2"></div>
-            <div class="col-8 border border-dark" style="height:200px; width:150px; background-color: #80bdff"><?php echo $datosLibro["portada"];?></div>
+            <div class="col-8 border border-dark" style="height:400px; width:150px; background-color: #80bdff"><img src="<?php echo $datosLibro["portada"];?>"></div>
             <div class="col-2"></div>
         </div>
         <div class="row border border-dark" style="background-color: #efa2a9">
             <button class="btn btn-primary btn-block disabled" type="button"><?php echo $datosLibro["titulo"];?></button>
             <br>
-            <button class="btn btn-primary btn-block disabled" type="button"><?php echo $datosLibro["autor"];?></button>
+            <button id="autorPgLibro" class="btn btn-primary btn-block" type="button" value="<?php echo $datosLibro["autor"];?>">
+                <?php echo $datosLibro["autor"];?></button>
             <br>
             <button class="btn btn-primary btn-block disabled" type="button"><?php echo $datosLibro["genero"];?></button>
         </div>
@@ -103,6 +104,20 @@
     function muestraModal() {
         $('#myModal').modal('show');
     };
+    
+    //Ir a la página del autor
+    
+    
+    
+    $("#autorPgLibro").click(function(){
+        var _numeroPerfil=2;
+        var _nombreUsuario=$("#autorPgLibro").val();
+        
+        $('#contenedor').load("PaginaPerfil.php", {
+            numeroPerfil: _numeroPerfil,
+            nombreUsuario:_nombreUsuario
+        })
+    })
 
 
 

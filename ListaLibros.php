@@ -7,14 +7,18 @@
    
    //Vamos a obtener el género del libro
    
-   $generoLibro=$_POST['genero'];
-
-   $tituloLibro;
-   $autorLibro;
-   $descripcionLibro;
-
-
-$consultaPorGenero="SELECT * FROM $bbdd.libro WHERE genero='$generoLibro'";
+   
+   $num=$_POST['num'];
+   
+   $consultaPorGenero;
+   
+   if($num==1){
+       $generoLibro=$_POST['genero'];
+       $consultaPorGenero="SELECT * FROM $bbdd.libro WHERE genero='$generoLibro'";
+   }else if($num==2){
+       $buscar=$_POST['buscar'];
+       $consultaPorGenero="SELECT * FROM $bbdd.libro WHERE genero LIKE '%$buscar%' OR autor LIKE '%$buscar%' OR descripcion LIKE '%$buscar%';"; 
+   }
 $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysql,$clave_mysql);
 
 
@@ -38,7 +42,8 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
                       <div class="row">
                           <div class="generodelibro col-6"><?php echo $value['genero'];?></div>
                           <div class="col-6">
-                              <button class="btn-primary botondelibro" value="<?php echo $value['IDLibro'];?>">Botón</button>
+                              <button class="btn-primary botondelibro" value="<?php echo $value['IDLibro'];?>">Libro</button>
+                              <button class="btn-primary botondeautor" value="<?php echo $value['autor'];?>">Autor</button>
                           </div>
                       </div>
                   </div>
@@ -53,6 +58,8 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
 
 <script>
     
+    //Pagina de libro
+    
     $(".botondelibro").click(function(){
          var _idlibro=$(this).val();
         
@@ -60,6 +67,20 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
                  idlibro: _idlibro
           });   
     });
+    
+    //Pagina de autor
+    
+    $(".botondeautor").click(function(){
+        var _numeroPerfil=2;
+        var _nombreUsuario=$('.botondeautor').val();
+        
+        $('#contenedor').load("PaginaPerfil.php", {
+            numeroPerfil: _numeroPerfil,
+            nombreUsuario:_nombreUsuario
+        })
+    })
+    
+    
 
 
 
