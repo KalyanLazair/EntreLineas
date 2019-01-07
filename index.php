@@ -37,7 +37,6 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-8 border border-dark" style="background-color: #ccccff; height:100px;">Espacio en blanco
                     <button id="perfilPrueba" class="btn btn-primary" type="button" onclick="" value="Koenig">Perfil Usuario Prueba</button> 
-                    <button class="btn btn-primary" type="button" onclick="cargaLibro();">Perfil Libro Prueba</button> 
                 </div>
                 <div class="col-2 border border-dark" style="background-color: #ccccff; height:100px;">
                     <button class="btn btn-primary btn-block" type="button" onclick="cargaRegistro();">Registrarse</button>

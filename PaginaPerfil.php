@@ -22,7 +22,7 @@ $autor;
 //otro usuario el que hemos pulsado.
 $numeroPerfil=$_POST['numeroPerfil'];
    
-echo $numeroPerfil;
+//echo $numeroPerfil;
 
 //Vamos a cargar los datos de usuario cuando este sea otro que no el de sesión.
 if($numeroPerfil==2){
@@ -50,6 +50,27 @@ if($numeroPerfil==2){
     
     $autor=$nombreUsuario;   
 }else if($numeroPerfil==1){
+    
+    //Vamos a sacar los datos del usuario que tenga el IDUser igual al que le pasamos como parámetro.
+$IDusuario=$_SESSION['IDUser'];
+$consulta= "SELECT * FROM $bbdd.userdata WHERE IDUserData=$IDusuario;";
+
+$resultado2 = accesoBBDD($consulta, $servidor, $bbdd, $usuario_mysql,$clave_mysql);
+
+if($resultado2 != NULL){
+    //Datos procesados, se procesa el array /array to string/ con el foreach.
+    foreach ($resultado2 as $key => $value) {
+           $_SESSION['nombre']=$value['nombre'];
+            $_SESSION['apellidos']=$value['apellidos'];
+            $_SESSION['sexo']=$value['sexo'];
+            $_SESSION['ciudad']=$value['ciudad'];
+            $_SESSION['pais']=$value['pais'];
+             $_SESSION['descripcion']=$value['descripcion'];
+            $_SESSION['foto']=$value['foto'];   
+    }
+    
+}
+    
     $autor=$_SESSION['username'];
     //Datos
     $nombreUser=$_SESSION['nombre'];
@@ -60,19 +81,20 @@ if($numeroPerfil==2){
     $descripcionUser=$_SESSION['descripcion'];
     $fotoUser=$_SESSION['foto'];
 }  
+
 //Lista de libros publicados por el usuario que le vamos a pasar como parámetro.
 
 $consultaLibros="SELECT * FROM bbddel.libro WHERE autor='$autor';";
 $listaLibros = accesoBBDD($consultaLibros, $servidor, $bbdd, $usuario_mysql,$clave_mysql);
 
 //$libros = array();
-echo '<pre>';
-print_r($listaLibros);
-echo '</pre>';
-
-$myJson = json_encode($listaLibros);
-
-print_r($myJson);
+//echo '<pre>';
+//print_r($listaLibros);
+//echo '</pre>';
+//
+//$myJson = json_encode($listaLibros);
+//
+//print_r($myJson);
 
 
 //if($listaLibros != NULL){
@@ -96,7 +118,8 @@ print_r($myJson);
     <div class="col-4 border border-dark">
         <div class="row border border-dark">
             <div class="col-2"></div>
-            <div class="col-8 border border-dark" style="height:200px; width:150px; background-color: #80bdff"><?php echo $fotoUser;?></div>
+            <div class="col-8 border border-dark" style="height:200px; width:150px; background-color: #80bdff">
+                <img src="<?php echo $fotoUser?>"></div>
             <div class="col-2"></div>
         </div>
         <div class="row border border-dark" style="background-color: #efa2a9">
@@ -110,7 +133,7 @@ print_r($myJson);
             <br>
             <button class="btn btn-primary" type="button">Favoritos</button>
             <br>
-            <button class="btn btn-primary" type="button">Modificar Perfil</button>
+            <button id="botonModifica" class="btn btn-primary" type="button" onclick="modificar();">Modificar Perfil</button>
             <br>
             <button class="btn btn-primary" type="button" onclick="publicaLibro();">Publicar Libro</button>
         </div>
@@ -128,7 +151,8 @@ print_r($myJson);
                    ?>
             <div class="cajadelibros">
                 <div class="row">
-                  <div class="portadadelibro col-3"><?php echo $value['portada'];?></div>
+                  <div class="portadadelibro col-3">
+                  <img src="<?php echo $value['portada'];?>"></div>
                   <div class="col-8">
                       <div class="titulodelibro row"><?php echo $value['titulo'];?></div>
                       <div class="autordelibro row"><?php echo $value['autor'];?></div>
@@ -136,7 +160,7 @@ print_r($myJson);
                       <div class="row">
                           <div class="generodelibro col-6"><?php echo $value['genero'];?></div>
                           <div class="col-6">
-                              <button id="botondelibro" class="btn-primary" value="<?php echo $value['IDLibro'];?>">Botón</button>
+                              <button class="btn-primary botondelibro" value="<?php echo $value['IDLibro'];?>">Botón</button>
                           </div>
                       </div>
                   </div>
@@ -153,7 +177,7 @@ print_r($myJson);
 
 <script>
     
-    $("#botondelibro").click(function(){
+    $(".botondelibro").click(function(){
          var _idlibro=$(this).val();
         
          $('#contenedor').load("PaginaLibro.php", {
@@ -163,6 +187,10 @@ print_r($myJson);
    
    function publicaLibro(){
        $('#principal2').load('RegistraLibro.php');
+   }
+   
+   function modificar(){
+       $('#principal2').load('ModificaPerfil.php');
    }
 
 </script>

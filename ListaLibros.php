@@ -34,7 +34,8 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
                    ?>
             <div class="cajadelibros">
                 <div class="row">
-                  <div class="portadadelibro col-3"><?php echo $value['portada'];?></div>
+                  <div class="portadadelibro col-3">
+                   <img src="<?php echo $value['portada'];?>"></div>
                   <div class="col-8">
                       <div class="titulodelibro row"><?php echo $value['titulo'];?></div>
                       <div class="autordelibro row"><?php echo $value['autor'];?></div>
@@ -58,6 +59,7 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
 
 <script>
     
+    
     //Pagina de libro
     
     $(".botondelibro").click(function(){
@@ -72,7 +74,8 @@ $listaLibroGenero=accesoBBDD($consultaPorGenero, $servidor, $bbdd, $usuario_mysq
     
     $(".botondeautor").click(function(){
         var _numeroPerfil=2;
-        var _nombreUsuario=$('.botondeautor').val();
+        var _nombreUsuario=$(this).val();
+        
         
         $('#contenedor').load("PaginaPerfil.php", {
             numeroPerfil: _numeroPerfil,
